@@ -1,9 +1,7 @@
 <?php 
 
 session_start();
-
 require_once("vendor/autoload.php");
-
 use \Slim\Slim;
 use \Hcode\Page;
 use \Hcode\PageAdmin;
@@ -13,26 +11,18 @@ $app = new \Slim\Slim();
 
 $app->config('debug', true);
 
-$app->get('/', function() {
-    
+$app->get('/', function() {    
 	$page = new Hcode\Page();
-
 	$page->setTpl("index");
-
 });
 
 $app->get('/admin/', function() {
-
-	User::verifyLogin(); 
-    	
+	User::verifyLogin();     	
 	$page = new Hcode\PageAdmin();
-
 	$page->setTpl("index");
-
 });
 
-$app->get('/admin/login/', function() {
-    
+$app->get('/admin/login/', function() {    
 	$page = new Hcode\PageAdmin([
 		"header"=>false,
 		"footer"=>false
